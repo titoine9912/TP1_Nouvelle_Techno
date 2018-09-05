@@ -4,27 +4,16 @@ namespace Script
 {
 	public class MainController : MonoBehaviour
 	{
-		private GameObject player;
-		private Vector2 position;
+		private Player player;
 	
 		void Start ()
 		{
-			player = GameObject.FindGameObjectWithTag(Tags.Player);
-			position = player.transform.position;
+			player = FindObjectOfType<Player>();
 		}
 	
 		void Update () 
 		{
-			player.transform.position = position;
-			
-			if (Input.GetKey(KeyCode.D))
-			{
-				position = new Vector2(position.x + 0.1f, position.y);
-			}
-			if (Input.GetKey(KeyCode.A))
-			{
-				position = new Vector2(position.x - 0.1f, position.y);
-			}
+			player.Update();
 		}
 	}
 }
